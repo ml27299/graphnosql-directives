@@ -1,0 +1,38 @@
+{
+	"name": "@graphnosql/directives",
+	"version": "0.0.1",
+	"engines": {
+		"node": ">=10.15.0",
+		"npm": ">=6.9.0"
+	},
+	"main": "dist/index.js",
+	"repository": "git@github.com:ml27299/graphnosql-directives.git",
+	"scripts": {
+		"rm:build": "rm -rf ./.dist",
+		"build": "npm run rm:build && NODE_ENV=development webpack --config webpack.config.js --progress",
+		"build:prod": "NODE_ENV=production webpack",
+		"release:patch": "np patch --any-branch --no-2fa --branch master --no-publish --no-release-draft",
+		"release:minor": "np minor --no-2fa --any-branch --branch master --no-publish --no-release-draft",
+		"release:major": "np major --no-2fa --any-branch --branch master --no-publish --no-release-draft"
+	},
+	"author": "Mac Lara",
+	"license": "ISC",
+	"dependencies": {
+		"@graphql-tools/utils": "^8.2.2",
+		"debug": "^4.1.1",
+		"graphql": "^15.5.3",
+		"graphql-type-json": "^0.3.2"
+	},
+	"devDependencies": {
+		"@babel/register": "^7.9.0",
+		"babel-plugin-source-map-support": "^2.1.1",
+		"@babel/core": "^7.9.6",
+		"@babel/plugin-proposal-class-properties": "^7.8.3",
+		"@babel/plugin-proposal-throw-expressions": "^7.8.3",
+		"@babel/preset-env": "^7.9.6",
+		"babel-loader": "^8.1.0",
+		"webpack": "^5.57.1",
+		"webpack-cli": "^4.8.0",
+		"webpack-node-externals": "^3.0.0"
+	}
+}
