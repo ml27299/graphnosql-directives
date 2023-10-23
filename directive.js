@@ -1,6 +1,11 @@
 import { getDirective } from "@graphql-tools/utils";
+import required from "./libs/required";
 
-export default ({ schema, name, resolve }) => {
+export default ({
+	schema = required`schema`,
+	name = required`name`,
+	resolve = required`resolve`,
+}) => {
 	return (fieldConfig) => {
 		const directive = getDirective(schema, fieldConfig, name)?.[0];
 		if (!directive || Object.keys(directive).length === 0) return;

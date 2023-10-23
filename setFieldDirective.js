@@ -1,4 +1,4 @@
-import required from "../libs/required";
+import required from "./libs/required";
 
 export default ({
 	directiveName = required`directiveName`,

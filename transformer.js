@@ -1,4 +1,5 @@
 import { mapSchema, MapperKind } from "@graphql-tools/utils";
+import required from "./libs/required";
 
 export default (
 	schema = required`schema`,
