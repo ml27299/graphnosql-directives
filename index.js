@@ -1,9 +1,5 @@
-export * as Authorization from "./directives/Authorization.js";
-export * as Count from "./directives/Count.js";
-export * as Db from "./directives/Db.js";
-export * as Default from "./directives/Default.js";
-export * as Filter from "./directives/Filter.js";
-export * as Limit from "./directives/Limit.js";
-export * as Skip from "./directives/Skip.js";
-export * as Sort from "./directives/Sort.js";
-export * as UseCache from "./directives/UseCache.js";
+import directive from "./directive";
+import setFieldDirective from "./setFieldDirective";
+import transformer from "./transformer";
+
+export { directive, setFieldDirective, transformer };
