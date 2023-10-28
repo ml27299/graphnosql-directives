@@ -11,7 +11,12 @@ export default (resolve = required`resolve`) => {
 			try {
 				let resolveArgs;
 				if (resolve.then) {
-					resolveArgs = await resolve(parent, args, ctx, info);
+					resolveArgs = await resolve(
+						parent,
+						{ directive, ...args },
+						ctx,
+						info
+					);
 				} else {
 					resolveArgs = resolve(parent, args, ctx, info);
 				}
