@@ -2,7 +2,8 @@ import required from "./libs/required";
 
 export default (
 		directiveName = required`directiveName`,
-		directiveArgsFn = () => {}
+		directiveArgsFn = () => {},
+		conditionalFn = () => true
 	) =>
 	({
 		schemaComposer = required`schemaComposer`,
@@ -17,6 +18,7 @@ export default (
 		);
 
 		if (hasDirectiveAlready) return;
+		if (!conditionalFn(fnTypeConfigs)) return;
 
 		schemaComposer[Type].setFieldDirectives(
 			fieldName,
