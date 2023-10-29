@@ -1,6 +1,6 @@
 {
 	"name": "@graphnosql/directives",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"engines": {
 		"node": ">=10.15.0",
 		"npm": ">=6.9.0"
