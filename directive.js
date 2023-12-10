@@ -1,6 +1,9 @@
 import { getDirective } from "@graphql-tools/utils";
 import required from "./libs/required";
 
+const isAsyncFunction = (func) =>
+	Object.prototype.toString.call(func) === "[object AsyncFunction]";
+
 export default (resolve = required`resolve`) => {
 	return (name, schema) => (fieldConfig) => {
 		const directive = getDirective(schema, fieldConfig, name)?.[0];
@@ -10,7 +13,7 @@ export default (resolve = required`resolve`) => {
 		fieldConfig.resolve = async (parent, args, ctx, info) => {
 			try {
 				let resolveArgs;
-				if (resolve.then) {
+				if (isAsyncFunction(resolve)) {
 					resolveArgs = await resolve(
 						parent,
 						{ directive, ...args },
@@ -18,7 +21,7 @@ export default (resolve = required`resolve`) => {
 						info
 					);
 				} else {
-					resolveArgs = resolve(parent, args, ctx, info);
+					resolveArgs = resolve(parent, { directive, ...args }, ctx, info);
 				}
 				Object.assign(args, resolveArgs);
 				return await defaultResolver(parent, args, ctx, info);
